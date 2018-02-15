@@ -5,6 +5,7 @@ import {
     Pano,
     Text,
     View,
+    VrButton
 } from 'react-vr';
 
 import Panorama from './components/Panorama';
@@ -13,8 +14,8 @@ export default class team_bsod extends React.Component {
     // setting this as static because otherwise react-vr will complain.
     // makes it available as props
     static defaultProps = {
-		dataSource: 'dataSource.json'
-	};
+        dataSource: 'dataSource.json'
+    };
 
     constructor() {
         super();
@@ -25,22 +26,49 @@ export default class team_bsod extends React.Component {
     }
     componentDidMount() {
         fetch(asset(this.props.dataSource).uri)
-			.then(response => response.json())
-			.then(responseData => this.setState({
-				cities: responseData.cities
-			}));
+            .then(response => response.json())
+            .then(responseData => this.setState({
+                cities: responseData.cities
+            }));
     }
 
     renderPano() {
         let { currentCity } = this.state;
         let data = this.state.cities[currentCity].pano;
-        return <Panorama data={data}/>
+        return <Panorama data={data} />
     }
+
+    renderTooltips() {
+		let { currentCity } = this.state;
+		let data = this.state.cities[currentCity].tooltips;
+		return data.map((x, key) => {
+			return (
+				<View key={key}>
+					<VrButton 
+						style={{
+							backgroundColor: '#777879',
+							layoutOrigin: [.5, .5, 0],
+							position: 'absolute',
+							transform: [
+								{ rotateY: x.rotateY },
+								{ translate: [0, 0, -3] }
+							]	
+						}}
+						onEnter={() => { console.log('enter') }}
+						onExit={() => { console.log('exit') }}
+					>
+						<Text>{x.text}</Text>
+					</VrButton>
+				</View>
+			)
+		});
+	}
 
     render() {
         return (
             <View>
                 {this.state.cities && this.renderPano()}
+                {this.state.cities && this.renderTooltips()}
                 <Text
                     style={{
                         backgroundColor: '#777879',
