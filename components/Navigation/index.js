@@ -73,10 +73,14 @@ class Navigation extends React.Component {
             cancelAnimationFrame(this.frameHandle);
         } else {
             this.setState(() => ({
-                [animateableData[index]]: {
-                    animationWidth: delta,
-                    animationRadius: radius
-                }
+                animateableData: [
+                    ...animateableData.slice(0, index),
+                    animateableData[index] = {
+                        animationWidth: delta,
+                        animationRadius: radius
+                    },
+                    ...animateableData.slice(index + 1)
+                ]
             }));
         }
 
@@ -85,27 +89,31 @@ class Navigation extends React.Component {
         } else {
             cancelAnimationFrame(this.frameHandle)
             this.setState(() => ({
-                [animateableData[index]]: {
-                    animationWidth: DEFAULT_ANIMATION_BUTTON_SIZE,
-                    animationRadius: DEFAULT_ANIMATION_BUTTON_RADIUS
-                }
+                animateableData: [
+                    ...animateableData.slice(0, index),
+                    animateableData[index] = {
+                        animationWidth: DEFAULT_ANIMATION_BUTTON_SIZE,
+                        animationRadius: DEFAULT_ANIMATION_BUTTON_RADIUS
+                    },
+                    ...animateableData.slice(index + 1)
+                ]
             }));
         }
     }
 
     Utilities = {
-        handle: (index) => {
+        handle: (key) => {
             if (this.Utilities.timerID !== null) {
-                this.Utilities.clear();
+                this.Utilities.clear(key);
             }
-            this.animatePointer(true, index)
+            this.animatePointer(true, key)
             this.Utilities.timerID = setTimeout(() => {
-                this.props.handleTransition(this.props.data[index].name)
-                this.Utilities.clear();
+                this.props.handleTransition(this.props.data[key].name)
+                this.Utilities.clear(key);
             }, 3000);
         },
-        clear: (index) => {
-            this.animatePointer(false, index)
+        clear: (key) => {
+            this.animatePointer(false, key)
             clearTimeout(this.Utilities.timerID);
             this.Utilities.timerID = null;
         },
