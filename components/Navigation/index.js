@@ -23,8 +23,8 @@ class Navigation extends React.Component {
 
     animatePointer(play) {
         var delta = this.state.animationWidth + 0.002;
-        var radius = this.state.animationRadius + 10;
-        if(delta >= 0.13){
+        var radius = this.state.animationRadius + 0;
+        if(delta >= 0.08){
             cancelAnimationFrame(this.frameHandle);
         } else {
             this.setState({animationWidth: delta, animationRadius: radius});
@@ -66,6 +66,7 @@ class Navigation extends React.Component {
                 <Text>{this.props.data.displayName}</Text>
                 {this.state.showButton &&
                     <VrButton
+<<<<<<< HEAD
                         style={{
                             width: 0.15,
                             height:0.15,
@@ -83,6 +84,28 @@ class Navigation extends React.Component {
                                     height: this.state.animationWidth,
                                     borderRadius: this.state.animationRadius,
                                     backgroundColor: '#FFFFFFD9',
+=======
+                            style= {{paddingRight: 0.05}}
+                            onEnter={() => { this.Utilities.handle(this.props.data.name) }}
+                            onExit={() => { this.Utilities.clear() }}
+                    >
+                        <Text>{this.props.data.displayName}</Text>
+                        {this.state.showButton &&
+                            <VrButton
+                                style={{
+                                    position: 'absolute',
+                                    right: -0.08,
+                                    top: -0.03,
+                                    width: 0.09,
+                                    height:0.09,
+                                    borderRadius: 50,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    borderStyle: 'solid',
+                                    borderColor: '#FFFFFF80',
+                                    borderWidth: 0.01,
+                                    marginTop: 0.06,
+>>>>>>> added style to navigation prompts
                                     transform: [{ translate: [0, 0, 0] }],
                             }}>
                         </VrButton>
