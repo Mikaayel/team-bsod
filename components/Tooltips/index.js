@@ -8,8 +8,10 @@ import {
     VrButton
 } from 'react-vr';
 
+import Helpers from '../../helpers';
+
 const Tooltip = ({ x }) => {
-    return  (
+    return (
         <View>
             <VrButton
                 style={{
