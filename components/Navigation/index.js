@@ -51,25 +51,34 @@ class Navigation extends React.Component {
             animationRadius: DEFAULT_ANIMATION_BUTTON_RADIUS
         }));
 
-        this.setState(prevState => ({
+        this.setState(() => ({
             animateableData
         }));
 
     }
 
     animatePointer(play, index) {
-    
-        var delta = this.state.animateableData[index].animationWidth ? this.state.animateableData[index].animationWidth + 0.002 : 0;
-        var radius = this.state.animateableData[index].animationRadius ? this.state.animateableData[index].animationRadius + 10 : 0;
+        
+        const { animateableData } = this.state;
+        const currentAnimateableData = animateableData[index];
+
+        if (!currentAnimateableData) {
+            return;
+        }
+
+        var delta = currentAnimateableData.animationWidth + 0.002;
+
+        currentAnimateableData.animationWidth + 0.002;
+        currentAnimateableData.animationRadius + 10;
 
         if(delta >= 0.13){
             cancelAnimationFrame(this.frameHandle);
         } else {
             this.setState(() => ({
-                [animateableData[index]]: {
-                    animationWidth: delta,
-                    animationRadius: radius
-                }
+                animateableData: [
+                    ...animateableData.slice(0, index),
+                    ...animateableData.slice(index + currentAnimateableData)
+                ]
             }));
         }
 
@@ -78,10 +87,13 @@ class Navigation extends React.Component {
         } else {
             cancelAnimationFrame(this.frameHandle)
             this.setState(() => ({
-                [animateableData[index]]: {
-                    animationWidth: DEFAULT_ANIMATION_BUTTON_SIZE,
-                    animationRadius: DEFAULT_ANIMATION_BUTTON_RADIUS
-                }
+                animateableData: [
+                    ...animateableData.slice(0, index),
+                    ...animateableData.slice(index + {
+                        animationWidth: DEFAULT_ANIMATION_BUTTON_SIZE,
+                        animationRadius: DEFAULT_ANIMATION_BUTTON_RADIUS
+                    })
+                ]
             }));
         }
     }
@@ -110,6 +122,7 @@ class Navigation extends React.Component {
             <View style={wrapperStyle}>
                 {this.props.data.map((i, key) => 
                     <View style={wrapperFlex} key={`navigation-${key}`}>
+                        {console.log(this.state.animateableData[key])}
                         <VrButton
                             style={{ width: 0.15,
                                 height:0.15,
@@ -140,10 +153,10 @@ class Navigation extends React.Component {
                             style={{
                                 width: '100%',
                                 alignItems: 'center',
-                                transform: [
+                                //transform: [
                                     // { rotateY: this.props.data.rotateY },
                                     // { translate: [this.props.data.axisX, this.props.data.axisY, this.props.data.axisZ] }
-                                ]
+                                // ]
                             }}
                             onEnter={() => this.animatePointer(true, key)}
                             onExit={() => this.animatePointer(false, key)}
