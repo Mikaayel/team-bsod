@@ -10,6 +10,7 @@ import {
 import Button from './components/Button'
 import Panorama from './components/Panorama';
 import Tooltip from './components/Tooltips';
+import Navigation from './components/Navigation';
 
 export default class team_bsod extends React.Component {
     // setting this as static because otherwise react-vr will complain.
@@ -61,6 +62,8 @@ export default class team_bsod extends React.Component {
 
 				<Pano source={asset(`${this.state.currentCity.pano}`)} />
 
+				<Navigation data={this.state.cities}/>
+
 				{this.state.currentCity.buttons.map((i, key) =>
 					<Button
 						key={key}
@@ -68,6 +71,7 @@ export default class team_bsod extends React.Component {
 						handleTransition={this.renderPano}
 					/>
 				)}
+
             </View>
         );
     }

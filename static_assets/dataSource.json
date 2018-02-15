@@ -2,6 +2,7 @@
 	"cities": [
         {
 			"name": "waitingRoom",
+			"displayName": "Home",
 			"pano": "waiting_room.jpg",
 			"tooltips": [
 				{
@@ -78,6 +79,7 @@
 		},
 		{
 			"name": "dublin",
+			"displayName": "Dublin",
 			"pano": "dublin.jpg",
 			"tooltips": [
 				{
@@ -135,6 +137,7 @@
         },
         {
 			"name": "paris",
+			"displayName": "Paris",
 			"pano": "paris.jpg",
 			"tooltips": [
 				{
@@ -192,6 +195,7 @@
         },
         {
 			"name": "sanFrancisco",
+			"displayName": "San Francisco",
 			"pano": "san_fran.jpg",
 			"tooltips": [
 				{
@@ -249,6 +253,7 @@
         },
         {
 			"name": "sydney",
+			"displayName": "Sydney",
 			"pano": "sydney.jpg",
 			"tooltips": [
 				{
@@ -306,6 +311,7 @@
         },
         {
 			"name": "tokyo",
+			"displayName": "Tokyo",
 			"pano": "tokyo.jpg",
 			"tooltips": [
 				{
