@@ -98,12 +98,13 @@ export default class team_bsod extends React.Component {
 					</View>
 				}
 
-                {this.state.currentCity.buttons.map((i, key) =>
-                    <Button
-                        key={key}
-                        data={i}
-                        handleTransition={this.renderPano}
-                    />
+				{this.state.currentCity.name === 'waitingRoom' &&
+					this.state.currentCity.buttons.map((i, key) =>
+						<Button
+							key={key}
+							data={i}
+							handleTransition={this.renderPano}
+						/>
                 )}
 
             </View>

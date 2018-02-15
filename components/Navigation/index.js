@@ -58,40 +58,37 @@ class Navigation extends React.Component {
     }
 
     render() {
-        console.log('render: ', this.state);
-
         return (
+            <VrButton
+                    onEnter={() => { this.Utilities.handle(this.props.data.name) }}
+                    onExit={() => { this.Utilities.clear() }}
+            >
+                <Text>{this.props.data.displayName}</Text>
+                {this.state.showButton &&
                     <VrButton
-                            onEnter={() => { this.Utilities.handle(this.props.data.name) }}
-                            onExit={() => { this.Utilities.clear() }}
-                    >
-                        <Text>{this.props.data.displayName}</Text>
-                        {this.state.showButton &&
-                            <VrButton
-                                style={{
-                                    width: 0.15,
-                                    height:0.15,
-                                    borderRadius: 50,
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    borderStyle: 'solid',
-                                    borderColor: '#FFFFFF80',
-                                    borderWidth: 0.01,
-                                    marginTop: 0.06,
+                        style={{
+                            width: 0.15,
+                            height:0.15,
+                            borderRadius: 50,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderStyle: 'solid',
+                            borderColor: '#FFFFFF80',
+                            borderWidth: 0.01,
+                            marginTop: 0.06,
+                            transform: [{ translate: [0, 0, 0] }],
+                        }}>
+                        <VrButton
+                            style={{ width: this.state.animationWidth,
+                                    height: this.state.animationWidth,
+                                    borderRadius: this.state.animationRadius,
+                                    backgroundColor: '#FFFFFFD9',
                                     transform: [{ translate: [0, 0, 0] }],
-                                }}>
-                                <VrButton
-                                    style={{ width: this.state.animationWidth,
-                                            height: this.state.animationWidth,
-                                            borderRadius: this.state.animationRadius,
-                                            backgroundColor: '#FFFFFFD9',
-                                            transform: [{ translate: [0, 0, 0] }],
-                                    }}>
-                                </VrButton>
-                            </VrButton>
-                        }
+                            }}>
+                        </VrButton>
                     </VrButton>
-
+                }
+            </VrButton>
         )
     }
 }
