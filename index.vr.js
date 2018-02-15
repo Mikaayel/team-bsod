@@ -8,7 +8,7 @@ import {
 } from 'react-vr';
 
 export default class team_bsod extends React.Component {
-    // setting this as static because otherwise react-vr will complain. 
+    // setting this as static because otherwise react-vr will complain.
     // makes it available as props
     static defaultProps = {
 		dataSource: 'dataSource.json'
@@ -33,7 +33,7 @@ export default class team_bsod extends React.Component {
         let { currentCity } = this.state;
         let data = this.state.cities[currentCity].pano;
 		return (
-			<Pano source={asset(`${data}`)} /> 
+			<Pano source={asset(`${data}`)} />
 		)
     }
 
@@ -54,7 +54,7 @@ export default class team_bsod extends React.Component {
                         textAlignVertical: 'center',
                         transform: [{ translate: [0, 0, -3] }],
                     }}>
-                    hello
+                    Mika Loves D J Trump
         </Text>
             </View>
         );
