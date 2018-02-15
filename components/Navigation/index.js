@@ -59,17 +59,19 @@ class Navigation extends React.Component {
 
     render() {
         return (
-            <VrButton
+            <VrButton style={{paddingRight: 0.08}}
                     onEnter={() => { this.Utilities.handle(this.props.data.name) }}
                     onExit={() => { this.Utilities.clear() }}
             >
                 <Text>{this.props.data.displayName}</Text>
                 {this.state.showButton &&
                     <VrButton
-<<<<<<< HEAD
                         style={{
-                            width: 0.15,
-                            height:0.15,
+                            position: 'absolute',
+                            right: -0.08,
+                            top: -0.03,
+                            width: 0.09,
+                            height:0.09,
                             borderRadius: 50,
                             justifyContent: 'center',
                             alignItems: 'center',
@@ -77,35 +79,12 @@ class Navigation extends React.Component {
                             borderColor: '#FFFFFF80',
                             borderWidth: 0.01,
                             marginTop: 0.06,
-                            transform: [{ translate: [0, 0, 0] }],
                         }}>
                         <VrButton
                             style={{ width: this.state.animationWidth,
                                     height: this.state.animationWidth,
                                     borderRadius: this.state.animationRadius,
                                     backgroundColor: '#FFFFFFD9',
-=======
-                            style= {{paddingRight: 0.05}}
-                            onEnter={() => { this.Utilities.handle(this.props.data.name) }}
-                            onExit={() => { this.Utilities.clear() }}
-                    >
-                        <Text>{this.props.data.displayName}</Text>
-                        {this.state.showButton &&
-                            <VrButton
-                                style={{
-                                    position: 'absolute',
-                                    right: -0.08,
-                                    top: -0.03,
-                                    width: 0.09,
-                                    height:0.09,
-                                    borderRadius: 50,
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    borderStyle: 'solid',
-                                    borderColor: '#FFFFFF80',
-                                    borderWidth: 0.01,
-                                    marginTop: 0.06,
->>>>>>> added style to navigation prompts
                                     transform: [{ translate: [0, 0, 0] }],
                             }}>
                         </VrButton>
