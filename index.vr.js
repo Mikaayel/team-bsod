@@ -60,26 +60,6 @@ export default class team_bsod extends React.Component {
             }));
     }
 
-
-
-
-    // onMainWindowMessage(e){
-    //     if(e.data.type) {
-    //         console.log(e);
-
-    //     }
-    //     // switch (e.data.type) {
-    //     //   case 'newCoordinates':
-    //     //     console.log(e.data.coordinates);
-    //     // //     var scene_navigation = this.state.current_scene.navigations[0];
-    //     // //     this.state.current_scene.navigations[0]['translate'] = [e.data.coordinates.x,e.data.coordinates.y,e.data.coordinates.z]
-    //     // //     this.forceUpdate();
-    //     //   break;
-    //     //   default:
-    //     //   return;
-    //     // }
-    // }
-
     renderTooltips() {
         let data = this.state.currentCity.tooltips;
         return data.map((x, key) => {
@@ -93,7 +73,6 @@ export default class team_bsod extends React.Component {
     }
 
     render() {
-        console.log(this);
         if (!this.state.currentCity) {
             return <Text>Wait bitches</Text>
         }
@@ -104,10 +83,18 @@ export default class team_bsod extends React.Component {
 
                 <Pano source={asset(`${this.state.currentCity.pano}`)} />
 
-                <Navigation
-                    data={this.state.cities}
-                    handleTransition={this.renderPano}
-                />
+				{ console.log('Show Nav: ', !this.state.currentCity.name === 'waitingRoom')}
+				{!this.state.currentCity.name === 'waitingRoom' &&
+					<View style={wrapperStyle}>
+						{this.state.cities.map((i, key) =>
+							<Navigation
+							key={key}
+							data={i}
+							handleTransition={this.renderPano}
+							/>
+						)}
+					</View>
+				}
 
                 {this.state.currentCity.buttons.map((i, key) =>
                     <Button
