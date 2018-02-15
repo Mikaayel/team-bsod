@@ -7,6 +7,7 @@ import {
     View,
     VrButton
 } from 'react-vr';
+
 import Button from './components/Button'
 import Panorama from './components/Panorama';
 import Tooltip from './components/Tooltips';
@@ -19,61 +20,87 @@ export default class team_bsod extends React.Component {
         dataSource: 'dataSource.json'
     };
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             cities: null,
-			currentCity: null
+            currentCity: null
         }
-		this.renderPano = this.renderPano.bind(this);
-	}
+        this.renderPano = this.renderPano.bind(this);
+    }
+
+    componentWillMount() {
+        // listen to messages from worker 
+        const RCTDeviceEventEmitter = require('RCTDeviceEventEmitter');
+        RCTDeviceEventEmitter.addListener(
+        'newCoordinates',
+        (e) => { console.log(e) },
+        );
+    }
 
     componentDidMount() {
         fetch(asset(this.props.dataSource).uri)
-			.then(response => response.json())
-			.then(responseData => this.setState({
-				cities: responseData.cities,
-				currentCity: responseData.cities.find(i => i.name === 'waitingRoom')
+            .then(response => response.json())
+            .then(responseData => this.setState({
+                cities: responseData.cities,
+                currentCity: responseData.cities.find(i => i.name === 'waitingRoom')
             }));
     }
 
+    
+    
+
+    // onMainWindowMessage(e){
+    //     if(e.data.type) {
+    //         console.log(e);
+
+    //     }
+    //     // switch (e.data.type) {
+    //     //   case 'newCoordinates':
+    //     //     console.log(e.data.coordinates);
+    //     // //     var scene_navigation = this.state.current_scene.navigations[0];
+    //     // //     this.state.current_scene.navigations[0]['translate'] = [e.data.coordinates.x,e.data.coordinates.y,e.data.coordinates.z]
+    //     // //     this.forceUpdate();
+    //     //   break;
+    //     //   default:
+    //     //   return;
+    //     // }
+    // }
+
     renderTooltips() {
-		let data = this.state.currentCity.tooltips;
-		return data.map((x, key) => {
-            return <Tooltip key={key} x={x}/>
-		});
+        let data = this.state.currentCity.tooltips;
+        return data.map((x, key) => {
+            return <Tooltip key={key} x={x} />
+        });
     }
 
     renderPano(city) {
-		const newCity = this.state.cities.find(i => i.name === city);
-		this.setState({ currentCity: newCity})
-z
-	}
+        const newCity = this.state.cities.find(i => i.name === city);
+        this.setState({ currentCity: newCity })
+
+    }
 
     render() {
-
-		if (!this.state.currentCity) {
-			return <Text>Wait bitches</Text>
-		}
+        console.log(this);
+        if (!this.state.currentCity) {
+            return <Text>Wait bitches</Text>
+        }
 
         return (
             <View>
                 {this.state.cities && this.renderTooltips()}
 
-				<Pano source={asset(`${this.state.currentCity.pano}`)} />
+                <Pano source={asset(`${this.state.currentCity.pano}`)} />
 
-				<Navigation
-                    data={this.state.cities}
-                    handleTransition={this.renderPano}
-                />
+                <Navigation data={this.state.cities} />
 
-				{this.state.currentCity.buttons.map((i, key) =>
-					<Button
-						key={key}
-						data={i}
-						handleTransition={this.renderPano}
-					/>
-				)}
+                {this.state.currentCity.buttons.map((i, key) =>
+                    <Button
+                        key={key}
+                        data={i}
+                        handleTransition={this.renderPano}
+                    />
+                )}
 
             </View>
         );
