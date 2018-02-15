@@ -62,6 +62,7 @@ class Button extends React.Component {
                         position: 'absolute',
                         alignItems: 'center',
                         padding: .03,
+                        marginTop: -0.6,
                         transform: [
                             { rotateY: this.props.data.rotateY },
                             { translate: [this.props.data.axisX, this.props.data.axisY, this.props.data.axisZ] }
@@ -89,7 +90,7 @@ class Button extends React.Component {
                             borderColor: '#FFFFFF80',
                             borderWidth: 0.01,
                             marginTop: 0.06,
-                            transform: [{ translate: [0, 0, 2] }],
+                            transform: [{ translate: [0, 0, 0] }],
                         }}>
                         <VrButton
                             style={{ width: this.state.animationWidth,
