@@ -1,0 +1,61 @@
+{
+	"cities": [
+		{
+			"name": "dublin",
+			"pano": "chess-world.jpg",
+			"tooltips": [
+				{
+					"text": "this is some text 1",
+					"rotateY": 0,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 2",
+					"rotateY": 90,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 3",
+					"rotateY": 180,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 4",
+					"rotateY": 270,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				}
+			],
+			"buttons": [
+				{
+					"text": "button1",
+					"rotateY": 0,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "button2",
+					"rotateY": 90,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "button3",
+					"rotateY": 180,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				}
+			]
+		}
+	]
+}
