@@ -83,8 +83,7 @@ export default class team_bsod extends React.Component {
 
                 <Pano source={asset(`${this.state.currentCity.pano}`)} />
 
-				{ console.log('Show Nav: ', !this.state.currentCity.name === 'waitingRoom')}
-				{!this.state.currentCity.name === 'waitingRoom' &&
+				{this.state.currentCity.name !== 'waitingRoom' &&
 					<View style={wrapperStyle}>
 						{this.state.cities.map((i, key) =>
 							<Navigation
