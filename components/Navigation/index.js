@@ -4,42 +4,19 @@ import {
     View,
     VrButton
 } from 'react-vr';
-
-const wrapperStyle = {
-    width: '100%',
-    padding: .10,
-    backgroundColor: 'rgba(161, 161, 161, .8)',
-    borderRadius: .05,
-    borderStyle: 'solid',
-    borderWidth: 0.01,
-    transform: [
-        { rotateY: 45 },
-        { translate: [0, 0, -3] }
-    ]
-};
-
-const wrapperFlex = {
-    width: '100%',
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'stretch',
-}
-
-const listItemStyle = {
-    flex: 1,
-    alignSelf: 'flex-end'
-}
+import Button from '../Button'
 
 const DEFAULT_ANIMATION_BUTTON_RADIUS = 50;
 const DEFAULT_ANIMATION_BUTTON_SIZE = 0.0005;
 
 class Navigation extends React.Component {
- 
+
     constructor(props) {
         super(props);
         this.state = {
-            animateableData: []
+            animationWidth: DEFAULT_ANIMATION_BUTTON_SIZE,
+            animationRadius: DEFAULT_ANIMATION_BUTTON_RADIUS,
+            showButton: false
         }
         this.animatePointer = this.animatePointer.bind(this);
     }
@@ -58,7 +35,7 @@ class Navigation extends React.Component {
     }
 
     animatePointer(play, index) {
-        
+
         const { animateableData } = this.state;
         const currentAnimateableData = animateableData[index];
 
@@ -83,7 +60,6 @@ class Navigation extends React.Component {
                 ]
             }));
         }
-
         if(play) {
             this.frameHandle = requestAnimationFrame(this.animatePointer);
         } else {
@@ -121,56 +97,40 @@ class Navigation extends React.Component {
     }
 
     render() {
+        console.log('render: ', this.state);
+
         return (
-            <View style={wrapperStyle}>
-                {this.props.data.map((i, key) => 
-                    <View style={wrapperFlex} key={`navigation-${key}`}>
-                        <VrButton
-                            style={{ width: 0.15,
-                                height:0.15,
-                                borderRadius: 50,
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                borderStyle: 'solid',
-                                borderColor: '#FFFFFF80',
-                                borderWidth: 0.01,
-                                marginTop: 0.06,
-                                flex: 1,
-                                transform: [{ translate: [0, 0, 0] }],
-                            }}
-                        >
+                    <VrButton
+                            onEnter={() => { this.Utilities.handle(this.props.data.name) }}
+                            onExit={() => { this.Utilities.clear() }}
+                    >
+                        <Text>{this.props.data.displayName}</Text>
+                        {this.state.showButton &&
                             <VrButton
                                 style={{
-                                        width: this.state.animateableData[key].animationWidth ? this.state.animateableData[key].animationWidth : 0,
-                                        height: this.state.animateableData[key].animationWidth ? this.state.animateableData[key].animationWidth : 0,
-                                        borderRadius: this.state.animateableData[key].animationRadius ? this.state.animateableData[key].animationRadius : 0,
-                                        backgroundColor: '#FFFFFFD9',
-                                        transform: [{ translate: [0, 0, 0] }],
-                                }}
-                            >
+                                    width: 0.15,
+                                    height:0.15,
+                                    borderRadius: 50,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    borderStyle: 'solid',
+                                    borderColor: '#FFFFFF80',
+                                    borderWidth: 0.01,
+                                    marginTop: 0.06,
+                                    transform: [{ translate: [0, 0, 0] }],
+                                }}>
+                                <VrButton
+                                    style={{ width: this.state.animationWidth,
+                                            height: this.state.animationWidth,
+                                            borderRadius: this.state.animationRadius,
+                                            backgroundColor: '#FFFFFFD9',
+                                            transform: [{ translate: [0, 0, 0] }],
+                                    }}>
+                                </VrButton>
                             </VrButton>
-                        </VrButton>
+                        }
+                    </VrButton>
 
-                        <VrButton
-                            style={{
-                                width: '100%',
-                                alignItems: 'center',
-                                // transform: [
-                                    // { rotateY: this.props.data.rotateY },
-                                    // { translate: [this.props.data.axisX, this.props.data.axisY, this.props.data.axisZ] }
-                                // ]
-                            }}
-                            onEnter={() => this.animatePointer(true, key)}
-                            onExit={() => this.animatePointer(false, key)}
-                            onClick={() => this.props.handleTransition(this.props.data[key].name) }
-                            onEnter={() => { this.Utilities.handle(key) }}
-                            onExit={() => { this.Utilities.clear(key) }}
-                        >
-                            <Text style={listItemStyle}>{i.displayName}</Text>
-                        </VrButton>
-                    </View>
-                )}
-            </View>
         )
     }
 }

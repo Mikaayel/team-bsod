@@ -13,6 +13,19 @@ import Panorama from './components/Panorama';
 import Tooltip from './components/Tooltips';
 import Navigation from './components/Navigation';
 
+const wrapperStyle = {
+    width: '100%',
+    padding: .10,
+    backgroundColor: 'rgba(161, 161, 161, .8)',
+    borderRadius: .05,
+    borderStyle: 'solid',
+    borderWidth: 0.01,
+    transform: [
+        { rotateY: 45 },
+        { translate: [0, 0, -3] }
+    ]
+};
+
 export default class team_bsod extends React.Component {
     // setting this as static because otherwise react-vr will complain.
     // makes it available as props
@@ -30,7 +43,7 @@ export default class team_bsod extends React.Component {
     }
 
     componentWillMount() {
-        // listen to messages from worker 
+        // listen to messages from worker
         const RCTDeviceEventEmitter = require('RCTDeviceEventEmitter');
         RCTDeviceEventEmitter.addListener(
         'newCoordinates',
@@ -47,8 +60,8 @@ export default class team_bsod extends React.Component {
             }));
     }
 
-    
-    
+
+
 
     // onMainWindowMessage(e){
     //     if(e.data.type) {
@@ -77,7 +90,6 @@ export default class team_bsod extends React.Component {
     renderPano(city) {
         const newCity = this.state.cities.find(i => i.name === city);
         this.setState({ currentCity: newCity })
-
     }
 
     render() {

@@ -18,7 +18,7 @@ class Button extends React.Component {
         }
         this.animatePointer = this.animatePointer.bind(this);
     }
-    
+
     animatePointer(play) {
         var delta = this.state.animationWidth + 0.002;
         var radius = this.state.animationRadius + 10;
@@ -68,8 +68,6 @@ class Button extends React.Component {
                             { translate: [this.props.data.axisX, this.props.data.axisY, this.props.data.axisZ] }
                         ]
                     }}
-                    onEnter={() => this.animatePointer(true)}
-                    onExit={() => this.animatePointer(false)}
                     onClick={() => this.props.handleTransition(this.props.data.transitionTo) }
                     onEnter={() => { this.Utilities.handle() }}
                     onExit={() => { this.Utilities.clear() }}
