@@ -7,7 +7,7 @@ import {
     View,
     VrButton
 } from 'react-vr';
-
+import Button from './components/Button'
 import Panorama from './components/Panorama';
 import Tooltip from './components/Tooltips';
 
@@ -25,35 +25,30 @@ export default class team_bsod extends React.Component {
         super();
         this.state = {
             cities: null,
-            currentCity: 0,
+			currentCity: null,
             animationWidth: DEFAULT_ANIMATION_BUTTON_SIZE,
             animationRadius: DEFAULT_ANIMATION_BUTTON_RADIUS
         }
         this.animatePointer = this.animatePointer.bind(this);
-    }
+		this.renderPano = this.renderPano.bind(this);
+	}
 
     componentDidMount() {
         fetch(asset(this.props.dataSource).uri)
 			.then(response => response.json())
 			.then(responseData => this.setState({
-				cities: responseData.cities
+				cities: responseData.cities,
+				currentCity: responseData.cities.find(i => i.name === 'waitingRoom')
             }));
     }
 
-    renderPano() {
-        let { currentCity } = this.state;
-        let data = this.state.cities[currentCity].pano;
-        return <Panorama data={data} />
-    }
-
     renderTooltips() {
-		let { currentCity } = this.state;
-		let data = this.state.cities[currentCity].tooltips;
+		let data = this.state.currentCity.tooltips;
 		return data.map((x, key) => {
             return <Tooltip key={key} x={x}/>
 		});
     }
-    
+
     animatePointer(play) {
         var delta = this.state.animationWidth + 0.002;
         var radius = this.state.animationRadius + 10;
@@ -69,10 +64,20 @@ export default class team_bsod extends React.Component {
         }
     }
 
+    renderPano(city) {
+		const newCity = this.state.cities.find(i => i.name === city);
+		this.setState({ currentCity: newCity})
+
+	}
+
     render() {
+
+		if (!this.state.currentCity) {
+			return <Text>Wait bitches</Text>
+		}
+
         return (
             <View>
-                {this.state.cities && this.renderPano()}
                 {this.state.cities && this.renderTooltips()}
 
                 <Text
@@ -83,7 +88,17 @@ export default class team_bsod extends React.Component {
                     onExit={() => this.animatePointer(false)}>
                     hover on make
                 </Text>
-                
+
+				<Pano source={asset(`${this.state.currentCity.pano}`)} />
+
+				{this.state.currentCity.buttons.map((i, key) =>
+					<Button
+						key={key}
+						data={i}
+						handleTransition={this.renderPano}
+					/>
+				)}
+
                 <VrButton
                     style={{ width: 0.15,
                         height:0.15,

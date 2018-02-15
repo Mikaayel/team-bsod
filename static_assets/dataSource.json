@@ -1,59 +1,78 @@
 {
 	"cities": [
         {
-			"name": "waiting room",
+			"name": "waitingRoom",
 			"pano": "waiting_room.jpg",
 			"tooltips": [
 				{
 					"text": "this is some text 1",
 					"rotateY": 0,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 2",
 					"rotateY": 90,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 3",
 					"rotateY": 180,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 4",
 					"rotateY": 270,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				}
 			],
 			"buttons": [
 				{
-					"text": "button1",
-					"rotateY": 0,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"text": "Go to Dublin",
+					"transitionTo": "dublin",
+					"rotateY": 30,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
-					"text": "button2",
-					"rotateY": 90,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"text": "Go to San Francisco",
+					"transitionTo": "sanFrancisco",
+					"rotateY": 93,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
-					"text": "button3",
-					"rotateY": 180,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"text": "Go to Paris",
+					"transitionTo": "paris",
+					"rotateY": 340,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
+				},
+				{
+					"text": "Go to Sydney",
+					"transitionTo": "sydney",
+					"rotateY": 216,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
+				},
+				{
+					"text": "Go to Tokyo",
+					"transitionTo": "tokyo",
+					"rotateY": 295,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				}
 			]
 		},
@@ -64,53 +83,53 @@
 				{
 					"text": "this is some text 1",
 					"rotateY": 0,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 2",
 					"rotateY": 90,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 3",
 					"rotateY": 180,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 4",
 					"rotateY": 270,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				}
 			],
 			"buttons": [
 				{
 					"text": "button1",
 					"rotateY": 0,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "button2",
 					"rotateY": 90,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "button3",
 					"rotateY": 180,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				}
 			]
         },
@@ -121,110 +140,110 @@
 				{
 					"text": "this is some text 1",
 					"rotateY": 0,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 2",
 					"rotateY": 90,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 3",
 					"rotateY": 180,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 4",
 					"rotateY": 270,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				}
 			],
 			"buttons": [
 				{
 					"text": "button1",
 					"rotateY": 0,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "button2",
 					"rotateY": 90,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "button3",
 					"rotateY": 180,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				}
 			]
         },
         {
-			"name": "san francisco",
+			"name": "sanFrancisco",
 			"pano": "san_fran.jpg",
 			"tooltips": [
 				{
 					"text": "this is some text 1",
 					"rotateY": 0,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 2",
 					"rotateY": 90,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 3",
 					"rotateY": 180,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 4",
 					"rotateY": 270,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				}
 			],
 			"buttons": [
 				{
 					"text": "button1",
 					"rotateY": 0,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "button2",
 					"rotateY": 90,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "button3",
 					"rotateY": 180,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				}
 			]
         },
@@ -235,53 +254,53 @@
 				{
 					"text": "this is some text 1",
 					"rotateY": 0,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 2",
 					"rotateY": 90,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 3",
 					"rotateY": 180,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 4",
 					"rotateY": 270,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				}
 			],
 			"buttons": [
 				{
 					"text": "button1",
 					"rotateY": 0,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "button2",
 					"rotateY": 90,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "button3",
 					"rotateY": 180,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				}
 			]
         },
@@ -292,53 +311,53 @@
 				{
 					"text": "this is some text 1",
 					"rotateY": 0,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 2",
 					"rotateY": 90,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 3",
 					"rotateY": 180,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "this is some text 4",
 					"rotateY": 270,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				}
 			],
 			"buttons": [
 				{
 					"text": "button1",
 					"rotateY": 0,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "button2",
 					"rotateY": 90,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				},
 				{
 					"text": "button3",
 					"rotateY": 180,
-					"x-axis": 0,
-					"y-axis": 0,
-					"z-axis": -3
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
 				}
 			]
 		}
