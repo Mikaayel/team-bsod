@@ -55,7 +55,7 @@ class Button extends React.Component {
 
     render() {
         return (
-            <View key={1}>
+            <View>
                 <VrButton
                     style={{
                         layoutOrigin: [.5, .5, 0],
