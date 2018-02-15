@@ -85,13 +85,16 @@ export default class team_bsod extends React.Component {
 
 				{this.state.currentCity.name !== 'waitingRoom' &&
 					<View style={wrapperStyle}>
-						{this.state.cities.map((i, key) =>
-							<Navigation
-							key={key}
-							data={i}
-							handleTransition={this.renderPano}
-							/>
-						)}
+						{this.state.cities
+							.filter(i => i.name !== this.state.currentCity.name)
+							.map((i, key) =>
+								<Navigation
+									key={key}
+									data={i}
+									handleTransition={this.renderPano}
+								/>
+							)
+						}
 					</View>
 				}
 
