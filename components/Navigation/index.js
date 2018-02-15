@@ -51,7 +51,7 @@ class Navigation extends React.Component {
             animationRadius: DEFAULT_ANIMATION_BUTTON_RADIUS
         }));
 
-        this.setState(prevState => ({
+        this.setState(() => ({
             animateableData
         }));
 
@@ -67,16 +67,17 @@ class Navigation extends React.Component {
         }
 
         var delta = currentAnimateableData.animationWidth + 0.002;
-        var radius = currentAnimateableData.animationRadius + 10;
+        currentAnimateableData.animationWidth + 0.002;
+        currentAnimateableData.animationRadius + 10;
 
         if(delta >= 0.13){
             cancelAnimationFrame(this.frameHandle);
         } else {
             this.setState(() => ({
-                [animateableData[index]]: {
-                    animationWidth: delta,
-                    animationRadius: radius
-                }
+                animateableData: [
+                    ...animateableData.slice(0, index),
+                    ...animateableData.slice(index + currentAnimateableData)
+                ]
             }));
         }
 
@@ -85,10 +86,13 @@ class Navigation extends React.Component {
         } else {
             cancelAnimationFrame(this.frameHandle)
             this.setState(() => ({
-                [animateableData[index]]: {
-                    animationWidth: DEFAULT_ANIMATION_BUTTON_SIZE,
-                    animationRadius: DEFAULT_ANIMATION_BUTTON_RADIUS
-                }
+                animateableData: [
+                    ...animateableData.slice(0, index),
+                    ...animateableData.slice(index + {
+                        animationWidth: DEFAULT_ANIMATION_BUTTON_SIZE,
+                        animationRadius: DEFAULT_ANIMATION_BUTTON_RADIUS
+                    })
+                ]
             }));
         }
     }
@@ -117,6 +121,7 @@ class Navigation extends React.Component {
             <View style={wrapperStyle}>
                 {this.props.data.map((i, key) => 
                     <View style={wrapperFlex} key={`navigation-${key}`}>
+                        {console.log(this.state.animateableData[key])}
                         <VrButton
                             style={{ width: 0.15,
                                 height:0.15,
