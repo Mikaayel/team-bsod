@@ -58,9 +58,16 @@ class Navigation extends React.Component {
     }
 
     animatePointer(play, index) {
-    
-        var delta = this.state.animateableData[index].animationWidth ? this.state.animateableData[index].animationWidth + 0.002 : 0;
-        var radius = this.state.animateableData[index].animationRadius ? this.state.animateableData[index].animationRadius + 10 : 0;
+        
+        const { animateableData } = this.state;
+        const currentAnimateableData = animateableData[index];
+
+        if (!currentAnimateableData) {
+            return;
+        }
+
+        var delta = currentAnimateableData.animationWidth + 0.002;
+        var radius = currentAnimateableData.animationRadius + 10;
 
         if(delta >= 0.13){
             cancelAnimationFrame(this.frameHandle);
@@ -87,18 +94,18 @@ class Navigation extends React.Component {
     }
 
     Utilities = {
-        handle: () => {
+        handle: (index) => {
             if (this.Utilities.timerID !== null) {
                 this.Utilities.clear();
             }
-            this.animatePointer(true)
+            this.animatePointer(true, index)
             this.Utilities.timerID = setTimeout(() => {
-                this.props.handleTransition(this.props.data.transitionTo)
+                this.props.handleTransition(this.props.data[index].name)
                 this.Utilities.clear();
             }, 3000);
         },
-        clear: () => {
-            this.animatePointer(false)
+        clear: (index) => {
+            this.animatePointer(false, index)
             clearTimeout(this.Utilities.timerID);
             this.Utilities.timerID = null;
         },
@@ -140,16 +147,16 @@ class Navigation extends React.Component {
                             style={{
                                 width: '100%',
                                 alignItems: 'center',
-                                transform: [
+                                // transform: [
                                     // { rotateY: this.props.data.rotateY },
                                     // { translate: [this.props.data.axisX, this.props.data.axisY, this.props.data.axisZ] }
-                                ]
+                                // ]
                             }}
                             onEnter={() => this.animatePointer(true, key)}
                             onExit={() => this.animatePointer(false, key)}
-                            // onClick={() => this.props.handleTransition(this.props.data.transitionTo) }
-                            // onEnter={() => { this.Utilities.handle() }}
-                            // onExit={() => { this.Utilities.clear() }}
+                            onClick={() => this.props.handleTransition(this.props.data[key].name) }
+                            onEnter={() => { this.Utilities.handle(key) }}
+                            onExit={() => { this.Utilities.clear(key) }}
                         >
                             <Text style={listItemStyle}>{i.displayName}</Text>
                         </VrButton>
