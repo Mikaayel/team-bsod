@@ -5,47 +5,106 @@ import {
     VrButton
 } from 'react-vr';
 
-const Button = (props) => {
+const DEFAULT_ANIMATION_BUTTON_RADIUS = 50;
+const DEFAULT_ANIMATION_BUTTON_SIZE = 0.0005;
 
-    const Utilities = {
-        handle: function() {
-            if (this.timerID !== null) {
-                this.clear();
-            }
-            this.timerID = setTimeout(() => {
-                props.handleTransition(props.data.transitionTo)
-                // this.changeRoom(roomID)
-                this.clear();
-            }, 5000);
-        },
-        clear: function() {
-            clearTimeout(this.timerID);
-            this.timerID = null;
-        },
-        timerID: null
+class Button extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            animationWidth: DEFAULT_ANIMATION_BUTTON_SIZE,
+            animationRadius: DEFAULT_ANIMATION_BUTTON_RADIUS
+        }
+        this.animatePointer = this.animatePointer.bind(this);
+    }
+    
+    animatePointer(play) {
+        var delta = this.state.animationWidth + 0.002;
+        var radius = this.state.animationRadius + 10;
+        if(delta >= 0.13){
+            cancelAnimationFrame(this.frameHandle);
+        } else {
+            this.setState({animationWidth: delta, animationRadius: radius});
+        }
+        if(play) {
+            this.frameHandle = requestAnimationFrame(this.animatePointer);
+        } else {
+            cancelAnimationFrame(this.frameHandle), this.setState({animationWidth: DEFAULT_ANIMATION_BUTTON_SIZE, animationRadius: DEFAULT_ANIMATION_BUTTON_RADIUS});
+        }
     }
 
-    return (
-        <View>
-            <VrButton
-                style={{
-                    backgroundColor: 'rgba(161, 161, 161, .8)',
-                    layoutOrigin: [.5, .5, 0],
-                    position: 'absolute',
-                    padding: .03,
-                    transform: [
-                        { rotateY: props.data.rotateY },
-                        { translate: [props.data.axisX, props.data.axisY, props.data.axisZ] }
-                    ]
-                }}
-                onClick={() => props.handleTransition(props.data.transitionTo) }
-                onEnter={() => {Utilities.handle()}}
-                onExit={() => {Utilities.clear()}}
-            >
-                <Text>{props.data.text}</Text>
-            </VrButton>
-        </View>
-    )
-};
+    Utilities = {
+        handle: () => {
+            if (this.Utilities.timerID !== null) {
+                this.Utilities.clear();
+            }
+            this.animatePointer(true)
+            this.Utilities.timerID = setTimeout(() => {
+                this.props.handleTransition(this.props.data.transitionTo)
+                this.Utilities.clear();
+            }, 3000);
+        },
+        clear: () => {
+            this.animatePointer(false)
+            clearTimeout(this.Utilities.timerID);
+            this.Utilities.timerID = null;
+        },
+        timerID: null,
+    }
 
-module.exports = Button;
+    render() {
+        return (
+            <View key={1}>
+                <VrButton
+                    style={{
+                        layoutOrigin: [.5, .5, 0],
+                        position: 'absolute',
+                        alignItems: 'center',
+                        padding: .03,
+                        transform: [
+                            { rotateY: this.props.data.rotateY },
+                            { translate: [this.props.data.axisX, this.props.data.axisY, this.props.data.axisZ] }
+                        ]
+                    }}
+                    onEnter={() => this.animatePointer(true)}
+                    onExit={() => this.animatePointer(false)}
+                    onClick={() => this.props.handleTransition(this.props.data.transitionTo) }
+                    onEnter={() => { this.Utilities.handle() }}
+                    onExit={() => { this.Utilities.clear() }}
+                >
+                    <Text style={{
+                        backgroundColor: 'rgba(161, 161, 161, .8)'
+                    }}>
+                        {this.props.data.text}
+                    </Text>
+
+                    <VrButton
+                        style={{ width: 0.15,
+                            height:0.15,
+                            borderRadius: 50,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderStyle: 'solid',
+                            borderColor: '#FFFFFF80',
+                            borderWidth: 0.01,
+                            marginTop: 0.06,
+                            transform: [{ translate: [0, 0, 2] }],
+                        }}>
+                        <VrButton
+                            style={{ width: this.state.animationWidth,
+                                    height: this.state.animationWidth,
+                                    borderRadius: this.state.animationRadius,
+                                    backgroundColor: '#FFFFFFD9',
+                                    transform: [{ translate: [0, 0, 0] }],
+                            }}>
+                        </VrButton>
+                    </VrButton>
+
+                </VrButton>
+            </View>
+        )
+    };
+}
+
+export default Button;
