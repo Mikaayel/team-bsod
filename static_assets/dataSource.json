@@ -60,9 +60,17 @@
 					"axisZ": -3
 				},
 				{
-					"text": "Go to Sydney",
-					"transitionTo": "sydney",
+					"text": "Go to New York",
+					"transitionTo": "newYork",
 					"rotateY": 216,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
+				},
+				{
+					"text": "Go to Toronto",
+					"transitionTo": "toronto",
+					"rotateY": 251,
 					"axisX": 0,
 					"axisY": 0,
 					"axisZ": -3
@@ -252,9 +260,67 @@
 			]
         },
         {
-			"name": "sydney",
-			"displayName": "Sydney",
-			"pano": "sydney.jpg",
+			"name": "newYork",
+			"displayName": "New York",
+			"pano": "new_york.jpg",
+			"tooltips": [
+				{
+					"text": "this is some text 1",
+					"rotateY": 0,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
+				},
+				{
+					"text": "this is some text 2",
+					"rotateY": 90,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
+				},
+				{
+					"text": "this is some text 3",
+					"rotateY": 180,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
+				},
+				{
+					"text": "this is some text 4",
+					"rotateY": 270,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
+				}
+			],
+			"buttons": [
+				{
+					"text": "button1",
+					"rotateY": 0,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
+				},
+				{
+					"text": "button2",
+					"rotateY": 90,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
+				},
+				{
+					"text": "button3",
+					"rotateY": 180,
+					"axisX": 0,
+					"axisY": 0,
+					"axisZ": -3
+				}
+			]
+		},
+		{
+			"name": "toronto",
+			"displayName": "Toronto",
+			"pano": "toronto.jpg",
 			"tooltips": [
 				{
 					"text": "this is some text 1",
