@@ -47,7 +47,7 @@ export default class team_bsod extends React.Component {
     renderPano(city) {
 		const newCity = this.state.cities.find(i => i.name === city);
 		this.setState({ currentCity: newCity})
-
+z
 	}
 
     render() {
@@ -62,7 +62,10 @@ export default class team_bsod extends React.Component {
 
 				<Pano source={asset(`${this.state.currentCity.pano}`)} />
 
-				<Navigation data={this.state.cities}/>
+				<Navigation
+                    data={this.state.cities}
+                    handleTransition={this.renderPano}
+                />
 
 				{this.state.currentCity.buttons.map((i, key) =>
 					<Button
