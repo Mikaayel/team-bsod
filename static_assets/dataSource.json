@@ -1,8 +1,293 @@
 {
 	"cities": [
+        {
+			"name": "waiting room",
+			"pano": "waiting_room.jpg",
+			"tooltips": [
+				{
+					"text": "this is some text 1",
+					"rotateY": 0,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 2",
+					"rotateY": 90,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 3",
+					"rotateY": 180,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 4",
+					"rotateY": 270,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				}
+			],
+			"buttons": [
+				{
+					"text": "button1",
+					"rotateY": 0,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "button2",
+					"rotateY": 90,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "button3",
+					"rotateY": 180,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				}
+			]
+		},
 		{
 			"name": "dublin",
-			"pano": "chess-world.jpg",
+			"pano": "dublin.jpg",
+			"tooltips": [
+				{
+					"text": "this is some text 1",
+					"rotateY": 0,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 2",
+					"rotateY": 90,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 3",
+					"rotateY": 180,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 4",
+					"rotateY": 270,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				}
+			],
+			"buttons": [
+				{
+					"text": "button1",
+					"rotateY": 0,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "button2",
+					"rotateY": 90,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "button3",
+					"rotateY": 180,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				}
+			]
+        },
+        {
+			"name": "paris",
+			"pano": "paris.jpg",
+			"tooltips": [
+				{
+					"text": "this is some text 1",
+					"rotateY": 0,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 2",
+					"rotateY": 90,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 3",
+					"rotateY": 180,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 4",
+					"rotateY": 270,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				}
+			],
+			"buttons": [
+				{
+					"text": "button1",
+					"rotateY": 0,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "button2",
+					"rotateY": 90,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "button3",
+					"rotateY": 180,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				}
+			]
+        },
+        {
+			"name": "san francisco",
+			"pano": "san_fran.jpg",
+			"tooltips": [
+				{
+					"text": "this is some text 1",
+					"rotateY": 0,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 2",
+					"rotateY": 90,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 3",
+					"rotateY": 180,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 4",
+					"rotateY": 270,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				}
+			],
+			"buttons": [
+				{
+					"text": "button1",
+					"rotateY": 0,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "button2",
+					"rotateY": 90,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "button3",
+					"rotateY": 180,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				}
+			]
+        },
+        {
+			"name": "sydney",
+			"pano": "sydney.jpg",
+			"tooltips": [
+				{
+					"text": "this is some text 1",
+					"rotateY": 0,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 2",
+					"rotateY": 90,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 3",
+					"rotateY": 180,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "this is some text 4",
+					"rotateY": 270,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				}
+			],
+			"buttons": [
+				{
+					"text": "button1",
+					"rotateY": 0,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "button2",
+					"rotateY": 90,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				},
+				{
+					"text": "button3",
+					"rotateY": 180,
+					"x-axis": 0,
+					"y-axis": 0,
+					"z-axis": -3
+				}
+			]
+        },
+        {
+			"name": "tokyo",
+			"pano": "tokyo.jpg",
 			"tooltips": [
 				{
 					"text": "this is some text 1",

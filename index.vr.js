@@ -41,7 +41,6 @@ export default class team_bsod extends React.Component {
         return (
             <View>
                 {this.state.cities && this.renderPano()}
-                {/* <Pano source={asset('chess-world.jpg')} /> */}
                 <Text
                     style={{
                         backgroundColor: '#777879',
