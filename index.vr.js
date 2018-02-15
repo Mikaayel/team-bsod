@@ -7,6 +7,8 @@ import {
     View,
 } from 'react-vr';
 
+import Panorama from './components/Panorama';
+
 export default class team_bsod extends React.Component {
     // setting this as static because otherwise react-vr will complain.
     // makes it available as props
@@ -32,9 +34,7 @@ export default class team_bsod extends React.Component {
     renderPano() {
         let { currentCity } = this.state;
         let data = this.state.cities[currentCity].pano;
-		return (
-			<Pano source={asset(`${data}`)} />
-		)
+        return <Panorama data={data}/>
     }
 
     render() {
