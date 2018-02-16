@@ -5,7 +5,8 @@ import {
     Pano,
     Text,
     View,
-    VrButton
+    VrButton,
+    AsyncStorage
 } from 'react-vr';
 
 import Button from './components/Button'
@@ -37,7 +38,8 @@ export default class team_bsod extends React.Component {
         super(props);
         this.state = {
             cities: null,
-            currentCity: null
+            currentCity: null,
+            localDataCities: []
         }
         this.renderPano = this.renderPano.bind(this);
     }
@@ -46,8 +48,26 @@ export default class team_bsod extends React.Component {
         // listen to messages from worker
         const RCTDeviceEventEmitter = require('RCTDeviceEventEmitter');
         RCTDeviceEventEmitter.addListener(
-        'newCoordinates',
-        (e) => { console.log(e) },
+            'newCoordinates',
+            (e) => {
+                this.setState({
+                    localDataCities: [
+                        ...this.state.localDataCities,
+                        {
+                            axisX: e.coordinates.x,
+                            axisY: e.coordinates.y,
+                            axisZ: -5,
+                            name: this.state.currentCity.name,
+                            rotateY: 0,
+                            text: "this is some custom text"
+                        }
+                    ]
+                }, () => {
+                    AsyncStorage.setItem('@MySuperStore:cities', {
+                        cities: [...this.state.localDataCities]
+                    });
+                })
+            }
         );
     }
 
@@ -57,7 +77,22 @@ export default class team_bsod extends React.Component {
             .then(responseData => this.setState({
                 cities: responseData.cities,
                 currentCity: responseData.cities.find(i => i.name === 'waitingRoom')
-            }));
+            }))
+            .then(() => {
+                const value = AsyncStorage.getItem('@MySuperStore:cities');
+                return value;
+            })
+            .then((responseData) => {
+                this.setState({
+                    localDataCities: responseData.cities
+                });
+            })
+            .catch(() => {
+                AsyncStorage.setItem('@MySuperStore:cities', {
+                    cities: []
+                });
+            })
+            ;
     }
 
     renderTooltips() {
@@ -65,6 +100,20 @@ export default class team_bsod extends React.Component {
         return data.map((x, key) => {
             return <Tooltip key={key} x={x} />
         });
+    }
+
+    renderCustomTooltips() {
+        let localData = this.state.localDataCities;
+        return localData.filter(w => w.name === this.state.currentCity.name).map((x, key) => {
+            return <View key={key} style={{
+                    position: 'absolute',
+                        transform: [
+                            { translate: [x.axisX, x.axisY, x.axisZ] }
+                        ]
+            }}>
+                        <Text>{x.text}</Text>
+                </View>
+        })
     }
 
     renderPano(city) {
@@ -80,6 +129,7 @@ export default class team_bsod extends React.Component {
         return (
             <View>
                 {this.state.cities && this.renderTooltips()}
+                {this.state.localDataCities && this.renderCustomTooltips()}
 
                 <Pano source={asset(`${this.state.currentCity.pano}`)} />
 
